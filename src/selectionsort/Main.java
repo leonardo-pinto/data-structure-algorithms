@@ -8,6 +8,7 @@ public class Main {
         int maxIndex = -1;
         int temp;
         int size = nums.length;
+        boolean swapped;
 
         System.out.println("before sorting");
         for (int num : nums) {
@@ -15,38 +16,36 @@ public class Main {
         }
 
         // Selection sort -> Swaps the min/max element in each outer iteration
-        // Nested loop based on the size of the array
+
+        // Repeatedly selects the smallest (or largest) element from the unsorted
+        // portion of the list and swaps it with the first element of the unsorted part
+        // The process is repeated for the remaining unsorted portion until the entire list is sorted.
         // Time Complexity: O(n^2)
 
-        // Maximum logic
-        for (int i = 0; i < size - 1; i++){
-            maxIndex = 0;
-            for (int j = 1; j < size - i; j++) {
-                if(nums[j] > nums[maxIndex]) {
-                    maxIndex = j;
+        // Minimum logic
+        for (int i = 0; i < size - 1; i++) {
+            minIndex = i;
+            for (int j = i + 1; j < size; j++) {
+                if (nums[j] < nums[minIndex]) {
+                    minIndex = j;
                 }
             }
-            temp = nums[size - i - 1];
-            nums[size - i - 1] = nums[maxIndex];
-            nums[maxIndex] = temp;
-
-            System.out.println();
-            for (int num : nums) {
-                System.out.print(num + " ");
-            }
+            temp = nums[i];
+            nums[i] = nums[minIndex];
+            nums[minIndex] = temp;
         }
 
-        // Minimum logic
-//        for (int i = 0; i < size - 1; i++) {
-//            minIndex = i;
-//            for (int j = i + 1; j < size; j++) {
-//                if(nums[minIndex] > nums[j]) {
-//                    minIndex = j;
+        // Maximum logic
+//        for (int i = 0; i < size - 1; i++){
+//            maxIndex = 0;
+//            for (int j = 1; j < size - i; j++) {
+//                if(nums[j] > nums[maxIndex]) {
+//                    maxIndex = j;
 //                }
 //            }
-//            temp = nums[i];
-//            nums[i] = nums[minIndex];
-//            nums[minIndex] = temp;
+//            temp = nums[size - i - 1];
+//            nums[size - i - 1] = nums[maxIndex];
+//            nums[maxIndex] = temp;
 //
 //            System.out.println();
 //            for (int num : nums) {
