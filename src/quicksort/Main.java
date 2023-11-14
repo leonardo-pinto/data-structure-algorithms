@@ -37,7 +37,6 @@ public class Main {
     // position in the sorted array. Repeatedly putting pivots in their actual position makes the
     // array sorted
     private static void quickSort(int[] nums, int low, int high){
-        System.out.println(low + " " + high);
         if (low < high) {
 
             // pi is the index of the pivot
